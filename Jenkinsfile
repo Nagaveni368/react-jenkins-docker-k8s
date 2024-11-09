@@ -1,4 +1,5 @@
 pipeline {
+<<<<<<< HEAD
     agent any  // Use any available agent or executor
 
     environment {
@@ -44,5 +45,15 @@ pipeline {
             echo 'Cleaning up...'
             deleteDir()
         }
+=======
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+>>>>>>> fdf10e40f86ffe3c7f9c491d743835579c01ca8a
     }
 }
