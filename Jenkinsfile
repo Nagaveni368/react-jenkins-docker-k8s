@@ -9,7 +9,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Clone the repository
-                git branch: 'main', url: 'u r repository link'
+                git branch: 'main', url: 'https://github.com/Nagaveni368/react-jenkins-docker-k8s.git'
             }
         }
 
