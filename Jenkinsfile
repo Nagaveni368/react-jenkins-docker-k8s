@@ -1,48 +1,33 @@
-pipeline {
-    agent any  // Use any available agent or executor
-
-    environment {
-        DEPLOY_ENV = 'staging'  // Define the deployment environment
-    }
+        pipeline {
+    agent any
 
     stages {
         stage('Checkout') {
             steps {
-                // Clone the repository
-                git branch: 'main', url: 'https://github.com/Nagaveni368/react-jenkins-docker-k8s.git'
+                // Checkout code from the repository
+                git 'https://github.com/Nagaveni368/react-jenkins-docker-k8s.git'
             }
         }
 
         stage('Build') {
             steps {
-                // Print a message or run actual build commands here
-                sh 'echo "Building application..."'
-                // Replace the line above with actual build commands, like mvn clean install for Maven
+                // Compile/build your code
+                sh 'make'  // Replace with your build command
             }
         }
 
         stage('Test') {
             steps {
-                // Print a message or run testing commands here
-                sh 'echo "Running tests..."'
-                // Replace this with commands for running unit tests, e.g., mvn test
+                // Run your tests
+                sh 'make test'  // Replace with your test command
             }
         }
 
         stage('Deploy') {
             steps {
-                // Deploy the application
-                sh 'echo "Deploying to ${DEPLOY_ENV} environment..."'
-                // Include commands to deploy, like scp for file transfer or remote deployment scripts
+                // Deploy your application
+                sh 'make deploy'  // Replace with your deploy command
             }
         }
     }
-
-    post {
-        always {
-            // Clean up workspace after the pipeline completes
-            echo 'Cleaning up...'
-            deleteDir()
-        }
-    }
 }
